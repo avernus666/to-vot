@@ -35,7 +35,12 @@ func main() {
 	}
 	defer db.Close()
 
-	handler := httpserver.New(db, logger, httpserver.TelegramConfig{BotToken: cfg.TelegramBotToken, WebhookSecret: cfg.TelegramWebhookSecret, MiniAppURL: cfg.MiniAppURL})
+	handler := httpserver.New(db, logger, httpserver.TelegramConfig{
+		BotToken:      cfg.TelegramBotToken,
+		WebhookSecret: cfg.TelegramWebhookSecret,
+		MiniAppURL:    cfg.MiniAppURL,
+	})
+
 	server := &http.Server{
 		Addr:              cfg.HTTPAddr,
 		Handler:           handler,
