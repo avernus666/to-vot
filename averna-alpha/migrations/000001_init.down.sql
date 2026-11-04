@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS audit_logs;
+DROP TABLE IF EXISTS outbox_events;
+DROP TABLE IF EXISTS processed_telegram_updates;
+DROP TABLE IF EXISTS bot_instances;
+DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS sessions;
+DROP TABLE IF EXISTS organization_members;
+DROP TABLE IF EXISTS organizations;
+DROP TABLE IF EXISTS users;

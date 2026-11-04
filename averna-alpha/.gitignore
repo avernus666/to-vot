@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+!.env.test.example
+*.log
+*.out
+coverage/
+coverage.html
+bin/
+dist/
+target/
+vendor/
+node_modules/
+.idea/
+.vscode/
+.DS_Store
+*.swp
