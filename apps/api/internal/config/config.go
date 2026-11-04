@@ -24,9 +24,16 @@ type Config struct {
 }
 
 func Load() (Config, error) {
+	// Render provides PORT at runtime. Prefer it over the local default,
+	// while still allowing HTTP_ADDR to be used in Docker Compose/local runs.
+	defaultHTTPAddr := env("HTTP_ADDR", ":8080")
+	if port := os.Getenv("PORT"); port != "" {
+		defaultHTTPAddr = ":" + port
+	}
+
 	cfg := Config{
 		Environment:           env("APP_ENV", "development"),
-		HTTPAddr:              renderAddr(),
+		HTTPAddr:              defaultHTTPAddr,
 		DatabaseURL:           os.Getenv("DATABASE_URL"),
 		RedisURL:              os.Getenv("REDIS_URL"),
 		TelegramBotToken:      os.Getenv("TELEGRAM_BOT_TOKEN"),
@@ -63,7 +70,7 @@ func Load() (Config, error) {
 	return cfg, nil
 }
 
-func renderAddr() string {\n\tif port := os.Getenv("PORT"); port != "" {\n\t\treturn ":" + port\n\t}\n\treturn env("HTTP_ADDR", ":8080")\n}\n\nfunc env(key, fallback string) string {
+func env(key, fallback string) string {
 	if value := os.Getenv(key); value != "" {
 		return value
 	}
