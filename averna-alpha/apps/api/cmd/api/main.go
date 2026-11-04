@@ -8,7 +8,6 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
 	"github.com/avernus666/averna/apps/api/internal/config"
 	"github.com/avernus666/averna/apps/api/internal/platform/database"
